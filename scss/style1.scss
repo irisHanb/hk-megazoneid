@@ -1,0 +1,164 @@
+@import './_reset';
+@import './_base';
+
+$color-point: #ccd5da;
+
+.page {
+  width: 100%;
+
+  &-inner {
+    width: 470px;
+    margin: 0 auto;
+  }
+}
+
+// hosting kr
+.page-1 {
+  position: relative;
+
+  .form {
+    position: absolute;
+    top: 382px;
+    left: 637px;
+
+    &-field {
+      &:last-child {
+        margin-top: 20px;
+      }
+    }
+    input {
+      padding: 0.3em;
+    }
+    button {
+      margin-top: 71px;
+      width: 515px;
+      height: 45px;
+      background-color: transparent;
+    }
+  }
+}
+
+// id 전환 안내 페이지
+.page-2 {
+  text-align: center;
+  // background: #f2f4f7;
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    background: #fff;
+    text-align: center;
+    border-bottom: 1px solid #cad8de;
+  }
+  .title {
+    padding: 30px 0;
+  }
+
+  //
+  .contents {
+    outline: 1px solid red;
+
+    margin: 0 auto;
+    margin-bottom: 50px;
+
+    width: 470px;
+    padding: 40px 30px;
+
+    background: #fff;
+
+    // 결합 선택
+    &__combination {
+      margin: 0 auto;
+      margin-top: 40px;
+
+      width: 410px;
+      padding-top: 20px;
+      // padding-left: 13px;
+      // padding-right: 13px;
+      border-top: 1px solid $color-point;
+
+      // outline: 1px solid blue;
+    }
+    .combination {
+      &__desc {
+        text-align: left;
+      }
+      &__btn button {
+        margin: 0 auto;
+        display: block;
+        text-align: left;
+        padding-left: 17px;
+        width: 100%;
+        height: 75px;
+        background: #fff;
+        border-radius: 7px;
+        border: 1px solid #ccd5da;
+        &.btn-select-yes {
+          margin-top: 20px;
+        }
+      }
+
+      // 통합하기
+      &-ok {
+        overflow: hidden;
+        background-color: #f7f7f7;
+        padding: 0;
+
+        -webkit-transition: max-height 1s;
+        -moz-transition: max-height 1s;
+        -ms-transition: max-height 1s;
+        -o-transition: max-height 1s;
+        transition: max-height 1s;
+        background: #e5feff;
+        overflow: hidden;
+        // "height: 0" not work with css transitions
+        max-height: 0;
+
+        &.on {
+          max-height: 300px;
+        }
+      }
+    }
+    .agreed {
+      margin-top: 20px;
+      font-size: 14px;
+      text-align: left;
+      border-bottom: 1px solid #ccd5da;
+      padding-bottom: 30px;
+      p:last-child {
+        margin-top: 20px;
+      }
+    }
+
+    .btns {
+      margin-top: 30px;
+      button {
+        width: 320px;
+        height: 40px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: #ccd5da;
+      }
+    }
+  }
+
+  .agreed {
+    position: relative;
+    overflow: hidden;
+    .prevent {
+      position: absolute;
+      top: -100%;
+      width: 100%;
+      height: 100%;
+      // transform: scaleY(0);
+      background: rgba(255, 255, 255, 0.6);
+      // transition: all 0.5s ease;
+      &.on {
+        top: 0;
+      }
+    }
+  }
+}

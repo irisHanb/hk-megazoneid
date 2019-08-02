@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MegaID :: 1</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <link rel="stylesheet" href="./css/style1.min.css">
+</head>
+
+<body>
+
+  <div id="app">
+
+    <!-- page: login 
+    <div class="page page-1" v-show="pageCurrent === 1">
+      <img src="./imgs/capture-assets/login.png" alt="">
+      <div class="form">
+        <p class="form-field"><input type="text" name="" id="" v-model="user.id"></p>
+        <p class="form-field"><input type="text" name="" id="" v-model="user.password"></p>
+        <button @click="goStep(2)"></button>
+      </div>
+    </div>
+    -->
+    <!-- page: 아이디통합 -->
+    <div class="page page-2" v-show="pageCurrent === 2">
+
+      <div class="header">
+        <img src="./imgs/header.png" alt="">
+      </div>
+
+      <div class="title">
+        <img src="./imgs/title.png" alt="">
+      </div>
+
+      <!-- select zone(box) -->
+      <div class="contents">
+        <div class="contents__texts">
+          <img src="./imgs/contents-texts.png" alt="">
+        </div>
+
+        <!-- select btns -->
+        <div class="contents__combination">
+          <div class="combination__desc">
+            <img src="./imgs/contents-select-texts.png" alt="">
+          </div>
+          <div class="combination__btn"><button class="combination__btn-ok" @click="toggleCombinationUI">전환하기</button></div>
+
+          <div class="combination-ok" :class="{on: combination.agreed}">
+            <div class="combination-ok__inner">
+              <button class="combination-ok_btn-close" @click="closeCombinationUI">X</button>
+              <div class="combination__desc">
+                <img src="./imgs/combination__desc.png" alt="">
+              </div>
+              <form>
+                <div class="form-field">
+                  <input type="text" name="" id="">
+                </div>
+                <div class="form-field">
+                  <input type="password" name="" id="">
+                </div>
+                <a href="https://www.hosting.kr/servlet/html?pgm_id=HOSTING000038" target="_blank">아이디찾기</a><a
+                  href="https://www.hosting.kr/servlet/html?pgm_id=HOSTING000039" target="_blank">비밀번호 찾기</a><button class="btn-confirm"
+                  @click="confirmCombination">확인</button>
+              </form>
+            </div>
+          </div>
+          <!-- no -->
+          <div class="combination__btn">
+            <button class="combination__btn-no">전환하지 않기</button>
+          </div>
+        </div>
+
+        <!--  -->
+        <div class="agreed">
+          <p>
+            <label for="agreed-use"><input type="checkbox" id="agreed-use" v-model="agreed.use">이용약관에 동의합니다. (필수)</label>
+            <a class="show-use" href="https://www.hosting.kr/servlet/html?pgm_id=HOSTING000048" target="_blank">이용약관 보기</a>
+          </p>
+          <p>
+            <label for="agreed-marketing"><input type="checkbox" id="agreed-marketing" v-model="agreed.marketing">마케팅 수신을
+              동의합니다.
+              (선택)</label>
+          </p>
+          <div class="btns">
+            <button class="btn-confirm" @click="confirmCombination">확인</button>
+          </div>
+          <div class="prevent" :class="{on: combination.agreed}">
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- // step 1 -->
+
+
+
+  </div>
+
+  <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        imgUrl: './imgs',
+        pageCurrent: 2,
+        user: {
+          id: null,
+          password: null,
+        },
+        combination: {
+          agreed: false,
+          complete: false
+        },
+        // 정책에 대한 동의
+        agreed: {
+          use: true,
+          marketing: false
+        },
+
+      },
+      methods: {
+        showCombinationUI() {
+          this.combination.agreed = true;
+        },
+        closeCombinationUI() {
+          this.combination.agreed = false;
+        },
+        toggleCombinationUI() {
+          this.combination.agreed = !this.combination.agreed;
+        },
+        confirmCombination() {
+
+
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
