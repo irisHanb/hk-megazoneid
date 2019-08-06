@@ -1,0 +1,338 @@
+@import './_reset';
+@import './_base';
+
+$color-gray: #cad8de;
+$color-green-light: #15aba5;
+$color-green-dark: #068380;
+$color-btn-hover: #028e99;
+
+a {
+  color: $color-green-dark;
+}
+.page {
+  width: 100%;
+  padding-bottom: 100px;
+}
+
+.section {
+  width: 100%;
+  min-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  // outline: 1px dotted blue;
+}
+
+.btn {
+  font-weight: bold;
+  overflow: hidden;
+
+  &-ok {
+    position: relative;
+    &:hover {
+      opacity: 0.8;
+    }
+    &__bg {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      color: #fff;
+      border: 1px solid $color-green-dark;
+
+      background: rgba(8, 157, 153, 1);
+      background: -moz-linear-gradient(
+        top,
+        rgba(8, 157, 153, 1) 0%,
+        rgba(6, 132, 129, 1) 100%
+      );
+      background: -webkit-gradient(
+        left top,
+        left bottom,
+        color-stop(0%, rgba(8, 157, 153, 1)),
+        color-stop(100%, rgba(6, 132, 129, 1))
+      );
+      background: -webkit-linear-gradient(
+        top,
+        rgba(8, 157, 153, 1) 0%,
+        rgba(6, 132, 129, 1) 100%
+      );
+      background: -o-linear-gradient(
+        top,
+        rgba(8, 157, 153, 1) 0%,
+        rgba(6, 132, 129, 1) 100%
+      );
+      background: -ms-linear-gradient(
+        top,
+        rgba(8, 157, 153, 1) 0%,
+        rgba(6, 132, 129, 1) 100%
+      );
+      background: linear-gradient(
+        to bottom,
+        rgba(8, 157, 153, 1) 0%,
+        rgba(6, 132, 129, 1) 100%
+      );
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#089d99', endColorstr='#068481', GradientType=0 );
+    }
+    &__label {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      outline: 1px dotted red;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+    }
+  }
+  &-cancel {
+    color: $color-green-dark;
+    text-decoration: underline;
+  }
+}
+
+.section-header {
+  cursor: pointer;
+  height: 67px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 123px;
+  border-top: 1px solid $color-gray;
+  background-color: #f2f4f7;
+}
+
+.section-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 205px;
+  border-top: 1px solid $color-gray;
+  background-color: #f2f4f7;
+}
+
+.section-select {
+  height: 275px;
+  border-top: 1px solid $color-gray;
+
+  .ment {
+    margin-top: 54px;
+  }
+  .btns {
+    margin-top: 30px;
+
+    button {
+      border: 1px solid #ccd5da;
+      width: 235px;
+      height: 46px;
+      font-size: 16px;
+      font-weight: 600;
+      // border-radius: 7px;
+      transition: all 0.3s ease;
+
+      &:disabled,
+      &:disabled:hover {
+        border-color: #ccd5da;
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+
+      &:first-child {
+        margin-right: 30px;
+      }
+      &:hover {
+        border-color: #000;
+      }
+      &.on {
+        border-width: 2px;
+        border-color: $color-green-dark;
+      }
+    }
+  }
+}
+
+.section-forms {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: #f8f8f8;
+
+  .form {
+    &-contents {
+      position: relative;
+
+      width: 383px;
+      margin: 0 auto;
+    }
+
+    &__btn-close {
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      top: 0;
+      right: -5px;
+    }
+
+    &-title {
+      text-align: left;
+      margin-bottom: 30px;
+    }
+
+    &-field {
+      &__password {
+        margin-top: 10px;
+      }
+    }
+
+    &-etc {
+      margin-top: 30px;
+      overflow: hidden;
+
+      .links {
+        float: left;
+        font-size: 18px;
+        color: #d7d7d7;
+        padding-top: 13px;
+        a {
+          font-size: 14px;
+        }
+      }
+      button {
+        display: inline-block;
+        position: relative;
+        float: right;
+        overflow: hidden;
+        width: 138px;
+        height: 40px;
+      }
+    }
+  }
+  input {
+    width: 100%;
+    height: 46px;
+    font-weight: bold;
+    border: 1px solid #9fb5be;
+    padding: 0 15px;
+    &.on {
+      border-width: 2px;
+    }
+  }
+}
+
+.section-policy {
+  .policy {
+    &-checks {
+      font-size: 14px;
+      text-align: left;
+
+      width: 323px;
+      margin: 0 auto;
+      padding-top: 25px;
+      height: 120px;
+      text-align: left;
+      * {
+        vertical-align: bottom;
+        line-height: 1.1;
+      }
+
+      input[type='checkbox'] {
+        display: none;
+      }
+      input[type='checkbox'] + i {
+        padding-top: 1px;
+        margin-right: 10px;
+        display: inline-block;
+        content: '';
+        width: 17px;
+        height: 17px;
+        background-image: url('/imgs/check-false.png');
+      }
+      input[type='checkbox']:checked + i {
+        background-image: url('/imgs/check-true.png');
+      }
+
+      &__use {
+        overflow: hidden;
+
+        .field {
+          float: left;
+        }
+        a {
+          font-size: 14px;
+          float: right;
+          padding-top: 2px;
+        }
+      }
+      &__marketing {
+        margin-top: 20px;
+      }
+    }
+
+    &-btns {
+      border-top: 1px solid $color-gray;
+      padding-top: 40px;
+      .inner {
+        margin: 0 auto;
+        width: 400px;
+      }
+      button {
+        display: inline-block;
+        width: 320px;
+        height: 40px;
+        text-align: center;
+      }
+    }
+
+    &-ment {
+      &__combineNo {
+        height: 74px;
+        background-color: #f8f8f8;
+        vertical-align: center;
+        padding-top: 30px;
+      }
+      &__combine {
+        padding-top: 30px;
+        height: 304px;
+        background-color: #f8f8f8;
+      }
+    }
+  }
+}
+
+.suggestion {
+  // margin: 0 auto;
+  border-top: 1px solid $color-gray;
+  text-align: center;
+
+  .title {
+    margin: 50px 0 40px 0;
+  }
+
+  .service {
+    &-list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    display: inline-block;
+
+    width: 313px;
+    height: 190px;
+    border: 1px solid $color-gray;
+    background-color: #f6f7f9;
+    padding-top: 40px;
+    padding-left: 40px;
+    transition: border 0.3s ease;
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+    &:hover {
+      border-color: $color-green-dark;
+    }
+  }
+}

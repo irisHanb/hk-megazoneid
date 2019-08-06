@@ -4,7 +4,6 @@ body {
 }
 
 body {
-  background-color: #f2f4f7;
   font-family: Georgia, 'Malgun Gothic', sans-serif;
   font-size: 16px;
   color: #101717;
@@ -16,4 +15,6 @@ body {
 button {
   cursor: pointer;
   border: none;
+  outline: none;
+  background-color: transparent;
 }

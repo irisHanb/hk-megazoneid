@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MegaID :: 2</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <link rel="stylesheet" href="./css/style2.min.css">
+</head>
+
+<body>
+
+  <div id="app">
+
+    <!-- page: login 
+    <div class="page page-1" v-show="pageCurrent === 1">
+      <img src="./imgs/capture-assets/login.png" alt="">
+      <div class="form">
+        <p class="form-field"><input type="text" name="" id="" v-model="user.id"></p>
+        <p class="form-field"><input type="text" name="" id="" v-model="user.password"></p>
+        <button @click="goStep(2)"></button>
+      </div>
+    </div>
+    -->
+    <!-- page: 아이디통합 -->
+    <div class="page page-2" v-show="pageCurrent === 2">
+
+      <div class="section section-header" @click="init">
+        <img src="./imgs/header.png" alt="">
+      </div>
+
+      <div class="section section-title">
+        <img v-if="step != stepName.end" src="./imgs/title.png" alt="">
+        <img v-else src="./imgs/title2.png" alt="">
+      </div>
+
+      <div class="section section-view">
+        <img src="./imgs/view1.jpg" alt="">
+      </div>
+
+      <div class="steps" v-show="step != stepName.end" s>
+        <div class="section section-select">
+          <div class="ment">
+            <img src="./imgs/ment1.png" alt="">
+          </div>
+
+          <div class="btns">
+            <button :class="{on: agreed === true}" @click="combine(true)">네</button>
+            <button :class="{on: agreed === false}" @click="combine(false)"
+              :disabled="agreed === true && step === stepName.onAgreedPolicy">아니요</button>
+          </div>
+        </div>
+
+        <!-- form -->
+        <div class="section section-forms" v-if="agreed === true && step === stepName.onSetUserInfo">
+
+          <div class="form-contents">
+            <button class="form__btn-close" @click="closeForm"><img src="./imgs/btn-close.png" alt=""></button>
+            <div class="form-title">
+              <img src="./imgs/combine-title1.png" alt="">
+            </div>
+            <p class="form-field">
+              <input :class="{on: user.id }" type="text" v-model="user.id" placeholder="아이디" @focus="setUserId">
+            </p>
+            <p class="form-field form-field__password">
+              <input :class="{on: user.password }" type="password" v-model="user.password" placeholder="비밀번호" @focus="setUserPassword">
+            </p>
+            <div class="form-etc">
+              <div class="links">
+                <a href="https://www.hosting.kr/servlet/html?pgm_id=HOSTING000038" target="_blank">아이디찾기</a> |
+                <a href="https://www.hosting.kr/servlet/html?pgm_id=HOSTING000039" target="_blank">비밀번호 찾기</a>
+              </div>
+              <button class="btn btn-ok form__btn-confirm" @click="endSetUserInfo">
+                <span class="btn-ok__bg"></span>
+                <span class="btn__label btn-ok__label">확인</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- policy -->
+        <div class="section section-policy" v-if="step === stepName.onAgreedPolicy || agreed === false">
+          <div class="policy-ment policy-ment__combineNo" v-if="agreed === false">
+            전환하지 않으면 신규 계정으로만 연결되고 기존 회원정보가 있다면 연결되지 않습니다.
+          </div>
+          <div class="policy-ment policy-ment__combine" v-else>
+            <img src="./imgs/onAgreedPolicy-ment-combine.png" alt="">
+          </div>
+          <div class="policy-checks">
+            <div class="policy-checks__use">
+              <span class="field">
+                <label for="policyUse"><input type="checkbox" id="policyUse" v-model="policy.use"><i></i>이용약관에 동의합니다. (필수)</label>
+              </span>
+              <a class="show-use" href="https://www.hosting.kr/servlet/html?pgm_id=HOSTING000048" target="_blank">이용약관 보기</a>
+            </div>
+            <div class="policy-checks__marketing">
+              <span class="field"><label for="policyMarketing"><input type="checkbox" id="policyMarketing" v-model="policy.marketing"><i></i>마케팅 수신을
+                  동의합니다.
+                  (선택)</label></span>
+            </div>
+          </div>
+
+          <div class="policy-btns">
+            <div class="inner">
+              <button type="button" class="btn btn-ok btn-complete" @click="submitCombine">
+                <span class="btn-ok__bg"></span>
+                <span class="btn-ok__label">확인</span>
+              </button>
+              <button type="button" class="btn btn-cancel btn-cancel" @click="cancelCombine">취소</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 통합절차 완료 후  -->
+      <div class="suggestion" v-show="step === stepName.end">
+        <h3 class="title"><img src="./imgs/suggestion-ment.png" alt=""></h3>
+        <ul class="service-list">
+          <li class="service" v-for="(ele, idx) in 3">
+            <img :src="'./imgs/suggestion' + (idx+1) +'.png'" alt="">
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- // page 2 -->
+
+
+  </div>
+
+  <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+
+  <script>
+
+    new Vue({
+      el: '#app',
+      data: {
+        imgUrl: './imgs',
+        pageCurrent: 2,
+        user: {
+          id: null,
+          password: null,
+        },
+        agreed: null,
+        step: null,
+        stepName: {
+          beforeSelect: 'beforeSelect',
+          onSetUserInfo: 'onSetUserInfo',
+          endSetUserInfo: 'completeSetUserIsnfo',
+          onAgreedPolicy: 'onAgreedPolicy',
+          end: 'complete'
+        },
+
+        // 정책에 대한 동의
+        policy: {
+          use: true,
+          marketing: false
+        },
+      },
+      mounted() {
+        // this.agreed = false;
+        // this.step = this.stepName.end;
+      },
+      computed: {
+
+      },
+      methods: {
+        init() {
+          this.user.id = null;
+          this.user.password = null;
+          this.agreed = null;
+          this.step = null;
+          this.policy.use = true;
+          this.policy.marketing = false;
+        },
+        combine(bool) {
+          this.init();
+          if (bool) {
+            this.agreed = true;
+            this.step = this.stepName.onSetUserInfo;
+          } else {
+            this.agreed = false;
+            this.step = this.stepName.onAgreedPolicy;
+          }
+        },
+        closeForm() {
+          this.init();
+        },
+        setUserId() {
+          this.user.id = 'travis';
+        },
+        setUserPassword() {
+          this.user.password = '****';
+        },
+        endSetUserInfo() {
+          if (!this.user.id || !this.user.password) {
+            alert('아이디와 비밀번호를 입력해주세요.');
+            return;
+          }
+          this.step = this.stepName.onAgreedPolicy;
+        },
+
+        // 최종 확인 버튼
+        submitCombine() {
+          if (!this.policy.use) {
+            alert('이용약관에 동의해주세요.')
+            return;
+          }
+          this.step = this.stepName.end;
+        },
+        cancelCombine() {
+          this.init();
+        }
+
+
+
+      }
+    })
+  </script>
+</body>
+
+</html>
